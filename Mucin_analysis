@@ -1,0 +1,27 @@
+SD t2t google doc
+  https://docs.google.com/document/d/1jlnIFsBpBtXegmwglW7SjcLU2GA4HjZS2Lmop67An4I/edit#heading=h.lq8mk1l5ccn4
+Location of the fasta files
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis
+
+SNPeff pipeline from Mitchell
+  https://github.com/mrvollger/assembly_workflows/blob/master/workflows/dipcall.smk
+  
+
+Phylogenetic analyis
+  There are three different parts of the analysis
+  1. PAML
+    Branch specific DN/DS analysis
+    1. Check SDA for chimp
+    2. Gather sequence for chimp, hg38, bonobo, gorilla and orang
+    3. run CDS alignment
+        MAFFT (module on cluster)
+    4. run protein alignment
+    5. Codon alighment
+        /net/eichler/vol26/projects/primate_sv/nobackups/Tools/TREEasy/translatorx_vLocal.pl
+    6. run PAML
+  2. Build Phylo tree
+    IQTree
+        1. Run MSA with MAFFT
+        2. run it from Yafei's home dir
+  3. Melecular clock
+    Beast
