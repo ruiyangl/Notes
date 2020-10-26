@@ -24,8 +24,4 @@ Phylogenetic analyis
         1. Run MSA with MAFFT
         2. run it from Yafei's home dir
   3. Melecular clock
-<<<<<<< HEAD
-    BEAST
-=======
-    Beast
->>>>>>> 234586ebb7a33661a22336aa7434815debb62150
+	BEAST
