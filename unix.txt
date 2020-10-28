@@ -1,0 +1,507 @@
+##################################
+##    ######################    ##
+##        #### UNIX ####        ##
+##    ######################    ##
+##################################
+
+
+
+###########
+## SHELL ##
+###########
+
+Kernel
+manage system
+manage the cpu and memory resources
+
+
+/dev: devices, in linux everthing is a file, so ALL hardwares are files in /dev
+/etc:  all the system wide configs (not peruser)
+/home: each user has its own dir, 
+/lib: all the libraries
+/mnt: mounted drives (hard drives, flash drive, vertual drives)
+/opt: optional manually installed softwares
+/prop: process, vertual files (CPU runtime and stuff)
+/root: the root user home folder
+
+/srv: publicly available files
+/tmp: temporary 
+/usr: user application space, bin is used by the entire system. 
+/var: variable directory, constantly growing
+
+
+
+
+Definitions
+===========
+                        send signals to            find out which program to run
+keyboard ---> terminal ------------------> shell ----------------------------------> programs -----
+                                                                                                  |
+monitor <------------------------------------------------------------------------------------------                                                                                  
+
+GUN-bash is the default shell for most of the linux machine, you can also use the terminal to interact with
+a python interpreter
+you can also use shell scripting to bypass the usage of the terminal
+
+Processes are units of isolation in a kernel - a running program can’t (directly) interfere with another running one
+
+
+
+
+a program is a software, when it is running, we called it a 
+
+A shell could be used interactively or as a bash processer
+
+GNU is a Unix-like operating system that ...( come on its basically Linux right?)
+
+ssh stands for 'Secure Shell' connect one network to another
+
+a command consist of two parts: name arguments
+	arguments can have switches that start with '-'
+	"$" alwayas stand for the shell 
+	you can use man + command name to read documentations
+	info page is another way to get help. info + command or "Ctrl-h i". in info page, use H to learn about use info
+
+
+>       stdout to file
+2>      stderr to file
+1>&2    stdout to stderr
+2>&1    stderr to stdout
+&>      stderr and stdout to file
+
+
+
+##########################
+#### Linux Philosophy ####
+##########################
+
+Make each program do one thing well
+Expect the output of every program to become the input to another, as yet unknown, program
+Design and build software, even operating systems, to be tried early
+Use tools in preference to unskilled help to lighten a programming task
+
+###############
+## VARIABLES ##
+###############
+
+$Varible_name=<variable> --------- assignment
+$echo $Variable_name ------------- call a variable
+
+String Concatination
+====================
+
+Variables are treated exactly like simple strings
+To concatinate simplee strings "abc" and "def", you can do $"abcdef"
+Same idea goes to variables
+To concatinate var_a and var_b, you can do "$var_a$var_b"
+When you want to concatinate a variable and a simple string you need to add "{}"
+for example "${var_a}def"
+
+Command substitution
+====================
+
+Command substitution allows the (standard) output of a command to replace the command itself with any new trailing newline being
+deleted
+For example $(seq 1 5) would be replaced by "1 2 3 4 5"
+
+
+##########################
+#### COMMAND GROUPING ####
+##########################
+
+Bash provides two ways to group a list of commands to be executed as a unit. When commands are grouped, redirections may be applied to the entire command list. For example, the output of all the commands in the list may be redirected to a single stream.
+
+()
+( list )
+Placing a list of commands between parentheses causes a subshell environment to be created (see Command Execution Environment), and each of the commands in list to be executed in that subshell. Since the list is executed in a subshell, variable assignments do not remain in effect after the subshell completes.
+
+{}
+{ list; }
+Placing a list of commands between curly braces causes the list to be executed in the current shell context. No subshell is created. The semicolon (or newline) following list is required.
+
+In addition to the creation of a subshell, there is a subtle difference between these two constructs due to historical reasons. The braces are reserved words, so they must be separated from the list by blanks or other shell metacharacters. The parentheses are operators, and are recognized as separate tokens by the shell even if they are not separated from the list by whitespace.
+
+The exit status of both of these constructs is the exit status of list.
+
+
+######################
+#### FLOW CONTROL ####
+######################
+
+
+
+
+
+
+
+
+$mkdir
+-p: make parent dir if none exit
+
+
+#==================================================================#
+
+Directory permissions
+
+l (lookup)
+    Allows one to list the contents of a directory. It does not allow the reading of files. 
+i (insert)
+    Allows one to create new files in a directory or copy new files to a directory. 
+d (delete)
+    Allows one to remove files and sub-directories from a directory. 
+a (administer)
+    Allows one to change a directory's ACL. The owner of a directory can always change the ACL of a directory that s/he owns, along with the ACLs of any subdirectories in that directory. 
+
+File permissions
+
+r (read)
+    Allows one to read the contents of file in the directory. 
+w (write)
+    Allows one to modify the contents of files in a directory and use chmod on them. 
+k (lock)
+    Allows programs to lock files in a directory. 
+
+
+
+
+#==========================find, ls, and grep======================#
+
+
+find [OPTIONS]] [PATH] [EXPR]
+grep [OPTIONS] [EXPR] [FILE...]
+ls
+
+* you don't need '' for the patterns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#####################
+#### ENVIRONMENT ####
+#####################
+
+Bash_profile and Bashrc
+=======================
+
+Login shells
+	meaning the shell that is excercuted right after a login, each login should have one login shell per-host to prevent redundency
+	when a login shell is initiated the following files are excercuted in the following order: /etc/profile --> ~/.bash_profile --> ~/.bash_login --> ~/.profile
+	these files should contain global variables and processes that are excercuted once per login (do the heavy lifting)
+	$0 = -bash
+non-login shells
+	these should be the children of the login shells and they will inherite variables from the login shells
+	when a non-login shell is initiated the ~/.bashrc file is excercuted where shell specific variables should reside
+	$0 = bash
+
+to check:
+
+```
+shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
+```
+
+**** Bonas ****
+
+interactive shell vs non-interactive shell
+------------------------------------------
+
+interactive shell: interact with user (duh)
+A shell running a script is always a non-interactive shell
+to check:
+
+```
+if [ -z $PS1 ] # no prompt?
+### if [ -v PS1 ]   # On Bash 4.2+ ...
+then
+  # non-interactive
+  ...
+else
+  # interactive
+  ...
+fi
+```
+
+or 
+
+```
+case $- in
+*i*)    # interactive shell
+;;
+*)      # non-interactive shell
+;;
+# (Courtesy of "UNIX F.A.Q.," 1993)
+```
+
+
+https://tldp.org/LDP/abs/html/intandnonint.html#:~:text=An%20interactive%20shell%20reads%20commands,always%20a%20non%2Dinteractive%20shell.
+
+
+
+
+
+
+
+
+>>>Environment variables name value pairs that affect how programs behave.
+
+>>>To view all environment variables
+...$printenv
+
+>>>Two ways to show specific environment varible
+...$HOME
+...$printenv HOME
+
+>>>environment varibles are, by convention, upper case
+
+>>>To create or change an environment vairible
+...$export HOME="homedir"
+
+>>>To delete an environmet varible
+...$unset VAR
+
+>>>man page often list the environment varible that a cammnad uses
+
+
+
+
+#																	#
+#-------------------------------tips--------------------------------#
+#																	#
+
+>>>watch --interval=0.5 qstat
+
+>>>to operate on multiple files
+$dir/{file1,file2,file3}
+
+
+
+##################
+#### SSH KEYS ####
+##################
+
+SSH keys contains two keys, one called the public key is uploaded to the server, the other one is the private key:
+
+>>> To generate a SSH key
+$ssh-keygen -t ed25519 -C "ruiyangl@outlook.com"
+
+
+
+
+##############
+#### FIND ####
+##############
+
+
+find [options] [path] [expression]
+
+to specify a expression 
+-----------------------
+find -name/-iname
+
+
+To specify a type
+-----------------
+find -type d(dir)/f(file)
+
+to specify depth
+----------------
+find -maxdepth 2 -mindepth 2
+
+
+specify time
+------------
+-ctime
+-mtime
+-atime
+
+Access - the last time the file was read
+Modify - the last time the file was modified (content has been modified)
+Change - the last time meta data of the file was changed (e.g. permissions)
+
+
+execute command on results
+--------------------------
+
+find . -type f -exec grep "example" '{}' \; -print
+
+find substitute {} with the result of find. ; tells find to grep for each file, + tells find to grep on all the results
+
+find has three types of options: options that are used to match files (e.g. -name, -user), options that specify actions to perform on the matched files (-print, -exec), and options that control the overall behavior of the command (e.g. -maxdepth, -xdev). The third type must be put before the other two. So it should be:
+
+-newer find file that are newer than a reference file
+
+
+##############
+#### GREP ####
+##############
+
+
+
+
+
+
+scp vyqtdang@nexus.gs.washington.edu:/net/eichler/vol26/7200/bac_assembly/nobackups/20190315_PCB-CC_SQ3P3_Sequel2/3_C01/bc1093_B/contig7.fasta .
+
+
+
+when you have ^M in a file, you can use sed 's/^M//g' to get rid of it. to type ^M ctrl-v-m
+
+
+http://tldp.org/LDP/abs/html/fto.html
+
+-e
+file exists
+
+-a
+file exists
+
+This is identical in effect to -e. It has been "deprecated," [1] and its use is discouraged.
+
+-f
+file is a regular file (not a directory or device file)
+
+-s
+file is not zero size
+
+-d
+file is a directory
+
+-b
+file is a block device
+
+
+-c
+file is a character device
+
+-eq
+is equal to
+
+if [ "$a" -eq "$b" ]
+
+-ne
+is not equal to
+
+if [ "$a" -ne "$b" ]
+
+-gt
+is greater than
+
+if [ "$a" -gt "$b" ]
+
+-ge
+is greater than or equal to
+
+if [ "$a" -ge "$b" ]
+
+-lt
+is less than
+
+if [ "$a" -lt "$b" ]
+
+-le
+is less than or equal to
+
+if [ "$a" -le "$b" ]
+
+<
+is less than (within double parentheses)
+
+(("$a" < "$b"))
+
+<=
+is less than or equal to (within double parentheses)
+
+(("$a" <= "$b"))
+
+>
+is greater than (within double parentheses)
+
+(("$a" > "$b"))
+
+>=
+is greater than or equal to (within double parentheses)
+
+(("$a" >= "$b"))
+
+string comparison
+
+=
+
+is equal to
+
+if [ "$a" = "$b" ]
+
+Caution 
+Note the whitespace framing the =.
+
+if [ "$a"="$b" ] is not equivalent to the above.
+
+==
+is equal to
+
+if [ "$a" == "$b" ]
+
+This is a synonym for =.
+
+Note    
+The == comparison operator behaves differently within a double-brackets test than within single brackets.
+[[ $a == z* ]]   # True if $a starts with an "z" (pattern matching).
+[[ $a == "z*" ]] # True if $a is equal to z* (literal matching).
+
+[ $a == z* ]     # File globbing and word splitting take place.
+[ "$a" == "z*" ] # True if $a is equal to z* (literal matching).
+
+# Thanks, Stéphane Chazelas
+!=
+is not equal to
+
+if [ "$a" != "$b" ]
+
+This operator uses pattern matching within a [[ ... ]] construct.
+
+<
+is less than, in ASCII alphabetical order
+
+if [[ "$a" < "$b" ]]
+
+if [ "$a" \< "$b" ]
+
+Note that the "<" needs to be escaped within a [ ] construct.
+
+>
+is greater than, in ASCII alphabetical order
+
+if [[ "$a" > "$b" ]]
+
+if [ "$a" \> "$b" ]
+
+Note that the ">" needs to be escaped within a [ ] construct.
+
+See Example 27-11 for an application of this comparison operator.
+
+-z
+string is null, that is, has zero length
+
+-n
+string is not null.
+
+
+
+
+
+
+
+#######################
+#### HERE DOCUMENT ####
+#######################
+
