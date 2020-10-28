@@ -251,27 +251,32 @@ https://tldp.org/LDP/abs/html/intandnonint.html#:~:text=An%20interactive%20shell
 
 
 
+Variables
+=========
 
->>>Environment variables name value pairs that affect how programs behave.
+global variables
+----------------
 
+>>>they are also called environment variables
+>>>they are passed onto the subshells
+>>>to decare a global variable
+...export
 >>>To view all environment variables
 ...$printenv
-
+...$env
 >>>Two ways to show specific environment varible
 ...$HOME
 ...$printenv HOME
-
 >>>environment varibles are, by convention, upper case
-
->>>To create or change an environment vairible
-...$export HOME="homedir"
-
 >>>To delete an environmet varible
-...$unset VAR
-
+...unset VAR
 >>>man page often list the environment varible that a cammnad uses
+>>>modifying a global variable in the subshells wont affect it in the bash shell
 
+local variables
+---------------
 
+local variables are decared without the export command
 
 
 #																	#
@@ -293,7 +298,6 @@ SSH keys contains two keys, one called the public key is uploaded to the server,
 
 >>> To generate a SSH key
 $ssh-keygen -t ed25519 -C "ruiyangl@outlook.com"
-
 
 
 
