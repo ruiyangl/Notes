@@ -1,13 +1,13 @@
-SD t2t google doc
+>>>SD t2t google doc
   https://docs.google.com/document/d/1jlnIFsBpBtXegmwglW7SjcLU2GA4HjZS2Lmop67An4I/edit#heading=h.lq8mk1l5ccn4
-Location of the fasta files
+>>>Location of the fasta files
   /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis
 
-SNPeff pipeline from Mitchell
+>>>SNPeff pipeline from Mitchell
   https://github.com/mrvollger/assembly_workflows/blob/master/workflows/dipcall.smk
   
 
-Phylogenetic analyis
+>>>Phylogenetic analyis
   There are three different parts of the analysis
   1. PAML
     Branch specific DN/DS analysis
@@ -25,3 +25,26 @@ Phylogenetic analyis
         2. run it from Yafei's home dir
   3. Melecular clock
     BEAST MODE
+
+
+>>>Lift off dir
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/Liftoff
+  .gff: contains all the information
+  all.gff contains all the information and properly formated
+  .bed bed format
+  .tbl tbl format
+  
+
+>>>existing sample qc
+  HPRC has its own pc stats
+  sample names: 
+    cat /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info{GIAB,UW_HPRC_HiFi,WUSTL_HPRC_HiFi,WUSTL_OTHER_HiFi}
+  stats are in this dir /net/eichler/vol27/projects/hprc/nobackups/assemblies/hifiasm_trio_yr1
+
+
+>>>hifiasm
+  takes three inputs:
+    1. all the hifi reads
+    2. illumina kmer from mom
+    3. illumina kmer from dad
+  uses all the hifi reads to genreate an assembly graph and use the uniq kmers from mom and dad to phase
