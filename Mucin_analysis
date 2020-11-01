@@ -5,7 +5,11 @@
 
 >>>SNPeff pipeline from Mitchell
   https://github.com/mrvollger/assembly_workflows/blob/master/workflows/dipcall.smk
-  
+
+
+
+
+
 
 >>>Phylogenetic analyis
   There are three different parts of the analysis
@@ -27,13 +31,13 @@
     BEAST MODE
 
 
->>>Lift off dir
+>>>Liftoff dir
   /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/Liftoff
   .gff: contains all the information
   all.gff contains all the information and properly formated
   .bed bed format
   .tbl tbl format
-  
+
 
 >>>existing sample qc
   HPRC has its own pc stats
@@ -48,3 +52,14 @@
     2. illumina kmer from mom
     3. illumina kmer from dad
   uses all the hifi reads to genreate an assembly graph and use the uniq kmers from mom and dad to phase
+
+
+
+>>> avalible genomes
+/net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/freeze.1.txt
+
+
+
+>>> master table
+/net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/Master_SD_freeze.tbl
+/net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/Master.tbl
