@@ -22,13 +22,18 @@
     4. run protein alignment
     5. Codon alighment
         /net/eichler/vol26/projects/primate_sv/nobackups/Tools/TREEasy/translatorx_vLocal.pl
+    5.5.
+      use Datamounky to see selection
     6. run PAML
   2. Build Phylo tree
     IQTree
         1. Run MSA with MAFFT
+          add -bb 1000 and -m MFPMERGE
         2. run it from Yafei's home dir
+        3. use https://itol.embl.de/ to visulize tree files
   3. Melecular clock
-    BEAST MODE
+    BEAST
+    https://beast2-dev.github.io/beast-docs/beast2/DivergenceDating/DivergenceDatingTutorial.html
 
 
 >>>Liftoff dir
