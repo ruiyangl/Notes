@@ -1,54 +1,49 @@
->>>SD t2t google doc
-  https://docs.google.com/document/d/1jlnIFsBpBtXegmwglW7SjcLU2GA4HjZS2Lmop67An4I/edit#heading=h.lq8mk1l5ccn4
->>>Location of the fasta files
-  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis
 
->>>SNPeff pipeline from Mitchell
-  https://github.com/mrvollger/assembly_workflows/blob/master/workflows/dipcall.smk
+##################
+#### PROJECTS ####
+##################
 
 
+  ----------------------
+| Phylogenetic analyis |
+ ----------------------
+
+notes
+=====
+
+
+>>>PAML
+  Branch specific DN/DS analysis
+  1. Check SDA for chimp
+  2. Gather sequence for chimp, hg38, bonobo, gorilla and orang
+    **** rerun exclude CDS, missing exon and pad the region by 5~10kb ****
+
+  3. run CDS alignment
+      MAFFT (module on cluster)
+  4. run protein alignment
+  5. Codon alighment
+      /net/eichler/vol26/projects/primate_sv/nobackups/Tools/TREEasy/translatorx_vLocal.pl
+  5.5.
+    use Datamounky to see selection
+  6. run PAML
+>>>Build Phylo tree
+  IQTree
+      1. Run MSA with MAFFT
+        add -bb 1000 and -m MFPMERGE
+      2. run it from Yafei's home dir
+      3. use https://itol.embl.de/ to visulize tree files
+>>>Melecular clock
+  BEAST
+  https://beast2-dev.github.io/beast-docs/beast2/DivergenceDating/DivergenceDatingTutorial.html
 
 
 
+ -----------
+| Mucin t2t |
+ -----------
 
->>>Phylogenetic analyis
-  There are three different parts of the analysis
-  1. PAML
-    Branch specific DN/DS analysis
-    1. Check SDA for chimp
-    2. Gather sequence for chimp, hg38, bonobo, gorilla and orang
-    3. run CDS alignment
-        MAFFT (module on cluster)
-    4. run protein alignment
-    5. Codon alighment
-        /net/eichler/vol26/projects/primate_sv/nobackups/Tools/TREEasy/translatorx_vLocal.pl
-    5.5.
-      use Datamounky to see selection
-    6. run PAML
-  2. Build Phylo tree
-    IQTree
-        1. Run MSA with MAFFT
-          add -bb 1000 and -m MFPMERGE
-        2. run it from Yafei's home dir
-        3. use https://itol.embl.de/ to visulize tree files
-  3. Melecular clock
-    BEAST
-    https://beast2-dev.github.io/beast-docs/beast2/DivergenceDating/DivergenceDatingTutorial.html
-
-
->>>Liftoff dir
-  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/Liftoff
-  .gff: contains all the information
-  all.gff contains all the information and properly formated
-  .bed bed format
-  .tbl tbl format
-
-
->>>existing sample qc
-  HPRC has its own pc stats
-  sample names: 
-    cat /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info{GIAB,UW_HPRC_HiFi,WUSTL_HPRC_HiFi,WUSTL_OTHER_HiFi}
-  stats are in this dir /net/eichler/vol27/projects/hprc/nobackups/assemblies/hifiasm_trio_yr1
+Notes
+=====
 
 
 >>>hifiasm
@@ -59,12 +54,63 @@
   uses all the hifi reads to genreate an assembly graph and use the uniq kmers from mom and dad to phase
 
 
+>>>BAC validation
+  1. get matched sample names
+  2. **** talk to Mitchell about validation pipeline
+
+>>>Sequence characterization
+  1. get alignment and aa change (length comp), be quantatative
+  2. group different structures
+  3. add gene modle
+    try augustus
+  4. diff isoseq
+
+>>>
+  1. Hit rate
+  
+>>>Beautify
+  1. Order sample and group haplotypes
+     https://github.com/mrvollger/assembly_workflows/blob/master/workflows/pull_regions.smk 
+  2. **** talk about syntanic regions
+  3. find a nice k size and make the track pipeline
+>>>Match sample wssd
+  **** talk to william about the manifest file
+
+
+
+
+Resources
+=========
+
+
+>>>Liftoff dir
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/Liftoff
+  .gff: contains all the information
+  all.gff contains all the information and properly formated
+  .bed bed format
+  .tbl tbl format
+
+>>>existing sample qc
+  HPRC has its own pc stats
+  sample names: 
+    cat /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info{GIAB,UW_HPRC_HiFi,WUSTL_HPRC_HiFi,WUSTL_OTHER_HiFi}
+  stats are in this dir /net/eichler/vol27/projects/hprc/nobackups/assemblies/hifiasm_trio_yr1
 
 >>> avalible genomes
-/net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/freeze.1.txt
-
-
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/freeze.1.txt
 
 >>> master table
-/net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/Master_SD_freeze.tbl
-/net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/Master.tbl
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/Master_SD_freeze.tbl
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis/sample_info/Master.tbl
+
+>>>SD t2t google doc
+  https://docs.google.com/document/d/1jlnIFsBpBtXegmwglW7SjcLU2GA4HjZS2Lmop67An4I/edit#heading=h.lq8mk1l5ccn4
+
+>>>Location of the fasta files
+  /net/eichler/vol26/projects/chm13_t2t/nobackups/assemblies_for_anlysis
+
+>>>SNPeff pipeline from Mitchell
+  https://github.com/mrvollger/assembly_workflows/blob/master/workflows/dipcall.smk
+
+
+ 
