@@ -25,7 +25,7 @@ notes
       /net/eichler/vol26/projects/primate_sv/nobackups/Tools/TREEasy/translatorx_vLocal.pl
   5.5.
     use Datamounky to see selection
-  6. run PAML
+  6. run PAML	
 >>>Build Phylo tree
   IQTree
       1. Run MSA with MAFFT
@@ -111,6 +111,21 @@ Resources
 
 >>>SNPeff pipeline from Mitchell
   https://github.com/mrvollger/assembly_workflows/blob/master/workflows/dipcall.smk
+>>>IsoSeq
+  chimp: https://eichlerlab.gs.washington.edu/great_ape_assembly/
+  /net/eichler/vol27/projects/AlphaSatelliteMapping/nobackups/FindingAlphaSat/iso-seq/CHM13/2-isoseq_processing/clustered_transcripts/chm13_all_unpolished.fasta.gz
+  /net/eichler/vol27/projects/AlphaSatelliteMapping/nobackups/FindingAlphaSat/iso-seq/CHM13/2-isoseq_processing/chm13_2_merged_flnc.bam
+/net/eichler/vol27/projects/AlphaSatelliteMapping/nobackups/FindingAlphaSat/iso-seq/CHM13/2-isoseq_processing/chm13_1_merged_flnc.bam
+/net/eichler/vol27/projects/legacy_storage/nobackups/temp/human_primate_brain_ips_transcriptomes/nobackups/NPIP_processing_misc/SD_DiffIsoSeq/CHM13/isoseq.yaml
+/net/eichler/vol27/projects/legacy_storage/nobackups/temp/human_primate_brain_ips_transcriptomes/nobackups/NPIP_processing_misc/SD_DiffIsoSeq/CHM13/alignments/transfer/NOTE
 
 
- 
+>>>BAC resources
+  bac/fosmid library bane; sample name
+  https://docs.google.com/spreadsheets/d/1kvEEHRi03LRTf4rubZcaYeLmQe9MFcaH_V_R8y_kKRA/edit#gid=1151501705
+  Hifi run information; sample name
+  https://docs.google.com/spreadsheets/d/1jZTvQjI_DH7mkRI1YF9EhBWD8WDQL4avCl6rFhO7q8Q/edit#gid=0
+  Sample information
+  bac information
+  https://docs.google.com/spreadsheets/d/1IxGZp0vB3IhNo_Bnt4Ou3Y8IS6TKrzDISXUgS7xmK3M/edit#gid=763377991
+
